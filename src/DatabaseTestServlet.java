@@ -8,13 +8,17 @@ import java.sql.*;
 
 @WebServlet(name = "DatabaseTestServlet", urlPatterns = "/db")
 public class DatabaseTestServlet extends HttpServlet {
+    private final String DATABASE_URL = "jdbc:derby:worldbible";
+    private final String USERNAME = "stacy";
+    private final String PASSWORD = "stacy";
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:derby:memory");
+            Connection conn = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
             Statement stmt = conn.createStatement();
             ResultSet rset = stmt.executeQuery("SELECT * FROM category");
 
