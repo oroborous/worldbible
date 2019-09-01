@@ -23,7 +23,16 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/derby.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/derbytools.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/derbyshared.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

@@ -8,7 +8,7 @@ import java.sql.*;
 
 @WebServlet(name = "DatabaseTestServlet", urlPatterns = "/db")
 public class DatabaseTestServlet extends HttpServlet {
-    private final String DATABASE_URL = "jdbc:derby:worldbible";
+    private final String DATABASE_URL = "jdbc:derby:";
     private final String USERNAME = "stacy";
     private final String PASSWORD = "stacy";
 
@@ -18,7 +18,10 @@ public class DatabaseTestServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            Connection conn = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
+            String path = getServletContext().getRealPath("/WEB-INF/lib/worldbible");
+
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+            Connection conn = DriverManager.getConnection(DATABASE_URL + path, USERNAME, PASSWORD);
             Statement stmt = conn.createStatement();
             ResultSet rset = stmt.executeQuery("SELECT * FROM category");
 
@@ -33,7 +36,8 @@ public class DatabaseTestServlet extends HttpServlet {
             conn.close();
 
             response.getWriter().print(sb.toString());
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
+            response.getWriter().print(e.getMessage());
             e.printStackTrace();
         }
     }
