@@ -8,9 +8,11 @@ import java.sql.*;
 
 @WebServlet(name = "DatabaseTestServlet", urlPatterns = "/db")
 public class DatabaseTestServlet extends HttpServlet {
-    private final String DATABASE_URL = "jdbc:derby:";
+    private final String DRIVER_NAME = "jdbc:derby:";
+    private final String DATABASE_PATH = "/WEB-INF/lib/worldbible";
     private final String USERNAME = "stacy";
     private final String PASSWORD = "stacy";
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -18,25 +20,42 @@ public class DatabaseTestServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            String path = getServletContext().getRealPath("/WEB-INF/lib/worldbible");
+            // Find the absolute path of the database folder
+            String absPath = getServletContext().getRealPath(DATABASE_PATH);
 
+            // Load the driver
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-            Connection conn = DriverManager.getConnection(DATABASE_URL + path, USERNAME, PASSWORD);
+            // Create a connection
+            Connection conn = DriverManager.getConnection(DRIVER_NAME + absPath, USERNAME, PASSWORD);
+            // Create a statement to execute SQL
             Statement stmt = conn.createStatement();
+            // Execute a SELECT query and get a result set
             ResultSet rset = stmt.executeQuery("SELECT * FROM category");
 
+            // Create a StringBuilder for ease of appending strings
             StringBuilder sb = new StringBuilder();
+            // HTML to create a simple web page
             sb.append("<html><body><ul>");
+
+            // Loop while the result set has more rows
             while (rset.next()) {
+                // Get the first string from each record
                 String name = rset.getString(1);
+                // Append it as a list item
                 sb.append("<li>").append(name).append("</li>");
             }
+            // Close all those opening tags
             sb.append("</ul></body></html>");
+
+            // Close the statement
             stmt.close();
+            // Close the connection
             conn.close();
 
+            // Send the HTML as the response
             response.getWriter().print(sb.toString());
         } catch (SQLException | ClassNotFoundException e) {
+            // If there's an exception, send IT as the response
             response.getWriter().print(e.getMessage());
             e.printStackTrace();
         }
