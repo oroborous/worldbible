@@ -19,43 +19,45 @@ public class DatabaseTestServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Load the driver
         try {
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+
             // Find the absolute path of the database folder
             String absPath = getServletContext().getRealPath(DATABASE_PATH);
 
-            // Load the driver
-            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-            // Create a connection
-            Connection conn = DriverManager.getConnection(DRIVER_NAME + absPath, USERNAME, PASSWORD);
-            // Create a statement to execute SQL
-            Statement stmt = conn.createStatement();
-            // Execute a SELECT query and get a result set
-            ResultSet rset = stmt.executeQuery("SELECT * FROM category");
+            try (
+                    // Create a connection
+                    Connection conn = DriverManager.getConnection(DRIVER_NAME + absPath, USERNAME, PASSWORD);
+                    // Create a statement to execute SQL
+                    Statement stmt = conn.createStatement();
+                    // Execute a SELECT query and get a result set
+                    ResultSet rset = stmt.executeQuery("SELECT * FROM category");
+            ) {
+                // Create a StringBuilder for ease of appending strings
+                StringBuilder sb = new StringBuilder();
+                // HTML to create a simple web page
+                sb.append("<html><body><ul>");
 
-            // Create a StringBuilder for ease of appending strings
-            StringBuilder sb = new StringBuilder();
-            // HTML to create a simple web page
-            sb.append("<html><body><ul>");
+                // Loop while the result set has more rows
+                while (rset.next()) {
+                    // Get the first string from each record
+                    String name = rset.getString("category_nm");
+                    // Append it as a list item
+                    sb.append("<li>").append(name).append("</li>");
+                }
+                // Close all those opening tags
+                sb.append("</ul></body></html>");
 
-            // Loop while the result set has more rows
-            while (rset.next()) {
-                // Get the first string from each record
-                String name = rset.getString(1);
-                // Append it as a list item
-                sb.append("<li>").append(name).append("</li>");
+                // Send the HTML as the response
+                response.getWriter().print(sb.toString());
+            } catch (SQLException e) {
+                // If there's an exception closing any resources, send IT as the response
+                response.getWriter().print(e.getMessage());
+                e.printStackTrace();
             }
-            // Close all those opening tags
-            sb.append("</ul></body></html>");
-
-            // Close the statement
-            stmt.close();
-            // Close the connection
-            conn.close();
-
-            // Send the HTML as the response
-            response.getWriter().print(sb.toString());
-        } catch (SQLException | ClassNotFoundException e) {
-            // If there's an exception, send IT as the response
+        } catch (ClassNotFoundException e) {
+            // If there's an exception locating the driver, send IT as the response
             response.getWriter().print(e.getMessage());
             e.printStackTrace();
         }
