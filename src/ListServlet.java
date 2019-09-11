@@ -6,12 +6,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
-@WebServlet(name = "DatabaseTestServlet", urlPatterns = "/db")
-public class DatabaseTestServlet extends HttpServlet {
-    private final String DRIVER_NAME = "jdbc:derby:";
-    private final String DATABASE_PATH = "/WEB-INF/lib/worldbible";
-    private final String USERNAME = "stacy";
-    private final String PASSWORD = "stacy";
+@WebServlet(name = "ListServlet", urlPatterns = "/list")
+public class ListServlet extends HttpServlet {
+
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,10 +26,10 @@ public class DatabaseTestServlet extends HttpServlet {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
 
             // Find the absolute path of the database folder
-            String absPath = getServletContext().getRealPath(DATABASE_PATH);
+            String absPath = getServletContext().getRealPath(DatabaseUtils.DATABASE_PATH);
 
             // Create a connection
-            conn = DriverManager.getConnection(DRIVER_NAME + absPath, USERNAME, PASSWORD);
+            conn = DriverManager.getConnection(DatabaseUtils.DRIVER_NAME + absPath, DatabaseUtils.USERNAME, DatabaseUtils.PASSWORD);
             // Create a statement to execute SQL
             stmt = conn.createStatement();
             // Execute a SELECT query and get a result set
