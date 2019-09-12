@@ -58,6 +58,7 @@ public class ListServlet extends HttpServlet {
             response.getWriter().print(e.getMessage());
             // Print stack trace
             e.printStackTrace();
+        } finally {
             // Close database objects
             DatabaseUtils.closeAll(conn, stmt, rset);
         }
