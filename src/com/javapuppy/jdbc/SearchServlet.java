@@ -1,4 +1,4 @@
-package jdbc;
+package com.javapuppy.jdbc;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

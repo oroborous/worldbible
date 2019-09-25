@@ -1,9 +1,7 @@
-package jdbc;
+package com.javapuppy.jdbc;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 
 public class DatabaseUtils {
     public static final String DRIVER_NAME = "jdbc:derby:";
