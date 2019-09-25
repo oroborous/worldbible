@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Load properties file: npc.properties -->
+    <context:property-placeholder location="classpath:npc.properties"/>
+
+    <!-- Define your beans here -->
+    <bean id="myLogService" class="com.javapuppy.springxml.services.ConsoleLogService">
+    </bean>
+
+    <bean id="myNpc" class="com.javapuppy.springxml.beans.NPC">
+        <!-- Setter injection -->
+        <property name="logService" ref="myLogService"/>
+
+        <!-- Inject literal values from properties file -->
+        <property name="firstName" value="${n1.first}"/>
+        <property name="bio" value="${n1.bio}"/>
+    </bean>
+
+</beans>
