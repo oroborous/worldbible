@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.sql.*;
 
 @WebServlet(name = "SearchServlet",
-            urlPatterns = "/search")
+        urlPatterns = "/search")
 public class SearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -71,6 +71,7 @@ public class SearchServlet extends HttpServlet {
             response.getWriter().print(e.getMessage());
             // Print stack trace
             e.printStackTrace();
+        } finally {
             // Close database objects
             DatabaseUtils.closeAll(conn, pstmt, rset);
         }
