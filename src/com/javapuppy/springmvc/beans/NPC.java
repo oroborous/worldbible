@@ -9,8 +9,17 @@ public class NPC {
     private String nickname;
     private String occupation;
     private String sex;
+    private String primaryImageFilename;
 
     public NPC() {
+    }
+
+    public String getPrimaryImageFilename() {
+        return primaryImageFilename;
+    }
+
+    public void setPrimaryImageFilename(String primaryImageFilename) {
+        this.primaryImageFilename = primaryImageFilename;
     }
 
     public String getDescription() {
