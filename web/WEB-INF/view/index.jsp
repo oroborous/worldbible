@@ -2,10 +2,11 @@
 <html>
 <head>
     <title>World Bible</title>
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css">
 </head>
 <body>
 <header class="header">
-    <img src="img/logo.jpg" height="177" width="236" alt="World Bible Logo">
+    <img src="resources/img/logo.jpg" height="177" width="236" alt="World Bible Logo">
     <h1>World Bible</h1>
 </header>
 <nav class="navigation">

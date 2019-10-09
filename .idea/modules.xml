@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/worldbible_complete.iml" filepath="$PROJECT_DIR$/worldbible_complete.iml" />
+      <module fileurl="file://$PROJECT_DIR$/worldbible.iml" filepath="$PROJECT_DIR$/worldbible.iml" />
     </modules>
   </component>
 </project>

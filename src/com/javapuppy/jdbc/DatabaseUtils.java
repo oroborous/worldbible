@@ -1,6 +1,5 @@
 package com.javapuppy.jdbc;
 
-
 import java.sql.*;
 
 public class DatabaseUtils {
@@ -9,7 +8,7 @@ public class DatabaseUtils {
     public static final String USERNAME = "stacy";
     public static final String PASSWORD = "stacy";
 
-    public static void closeAll(Connection conn, Statement stmt, ResultSet rset) {
+     public static void closeAll(Connection conn, Statement stmt, ResultSet rset) {
         if (rset != null) {
             try {
                 rset.close();
