@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class DatabaseUtils {
     public static final String DRIVER_NAME = "jdbc:derby:";
-    public static final String DATABASE_PATH = "/WEB-INF/lib/worldbible";
+    public static final String DATABASE_PATH = "db";
     public static final String USERNAME = "stacy";
     public static final String PASSWORD = "stacy";
 

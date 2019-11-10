@@ -1,6 +1,6 @@
 package com.javapuppy.springmvc.dao;
 
-import com.javapuppy.entity.Npc;
+import com.javapuppy.hibernate.entity.Npc;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

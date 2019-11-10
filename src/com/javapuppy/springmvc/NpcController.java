@@ -1,7 +1,7 @@
 package com.javapuppy.springmvc;
 
 import com.javapuppy.springmvc.dao.NpcDAO;
-import com.javapuppy.entity.Npc;
+import com.javapuppy.hibernate.entity.Npc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

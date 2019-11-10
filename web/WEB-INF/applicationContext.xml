@@ -8,7 +8,7 @@
     <bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <!-- JDBC Database connection settings -->
         <property name="driverClass" value="org.apache.derby.jdbc.EmbeddedDriver"/>
-        <property name="jdbcUrl" value="jdbc:derby:#{ servletContext.getRealPath('/WEB-INF/lib/worldbible') }"/>
+        <property name="jdbcUrl" value="jdbc:derby:#{ servletContext.getRealPath('/') }/../../../db"/>
         <property name="user" value="stacy"/>
         <property name="password" value="stacy"/>
 
@@ -22,7 +22,7 @@
     <!-- Hibernate session factory bean -->
     <bean id="mySessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="myDataSource"/>
-        <property name="packagesToScan" value="com.javapuppy.entity" />
+        <property name="packagesToScan" value="com.javapuppy.hibernate.entity" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.DerbyTenSevenDialect</prop>

@@ -1,4 +1,4 @@
-package com.javapuppy.entity;
+package com.javapuppy.hibernate.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,10 @@ public class Category {
     @Id
     @Column(name = "category_nm")
     private String name;
+
+    public Category() {
+        // no-arg constructor
+    }
 
     public Category(String name) {
         this.name = name;

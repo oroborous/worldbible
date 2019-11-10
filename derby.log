@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sun Nov 10 11:18:19 CST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.1.3 - (1853019): instance a816c00e-016e-5652-d4cc-00000b9bc7a0 
+on database directory C:\Users\moogi\IdeaProjects\worldbible\lib\worldbible with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
+Loaded from file:/C:/Users/moogi/IdeaProjects/worldbible/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=12.0.2+10
+user.dir=C:\Users\moogi\IdeaProjects\worldbible
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

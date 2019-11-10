@@ -1,4 +1,4 @@
-package com.javapuppy.entity;
+package com.javapuppy.hibernate.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
