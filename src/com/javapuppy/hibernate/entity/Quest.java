@@ -11,8 +11,10 @@ public class Quest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "quest_id")
     private int id;
+
     @Column(name = "nm")
     private String name;
+
     @Column(name = "description")
     private String description;
 

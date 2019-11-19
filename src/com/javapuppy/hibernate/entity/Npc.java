@@ -11,18 +11,25 @@ public class Npc {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "npc_id")
     private int id;
+
     @Column(name = "first_name")
     private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
+
     @Column(name = "nickname")
     private String nickname;
+
     @Column(name = "occupation")
     private String occupation;
+
     @Column(name = "sex")
     private String sex;
+
     @Column(name = "primary_image_filename")
     private String primaryImageFilename;
+
     @Column(name = "bio")
     private String bio;
 
